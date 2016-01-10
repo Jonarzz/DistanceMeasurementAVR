@@ -5,8 +5,8 @@
  *      Author: Jonasz
  */
 
-#ifndef MICROCONTROLLER_H_
-#define MICROCONTROLLER_H_
+#ifndef DISTANCEMEASUREMENT_H_
+#define DISTANCEMEASUREMENT_H_
 
 #include <avr/io.h>
 #include <util/delay.h>
@@ -57,8 +57,15 @@
 #define NUM_OF_IRS 4
 
 uint8_t led_iterator;
-uint16_t measured_values [NUM_OF_IRS];
+uint8_t wasMeasuredWithLedOn;
+uint8_t measurementDataComplete;
+int16_t measured_values [NUM_OF_IRS];
 
+const uint16_t diodeShiningTime;
 
+void interrupt_init();
+void start_measurement(uint16_t timer_compare_value);
+void ADC_init();
+void IR_init();
 
-#endif /* MICROCONTROLLER_H_ */
+#endif /* DISTANCEMEASUREMENT_H_ */
