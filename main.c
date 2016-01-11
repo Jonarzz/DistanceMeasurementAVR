@@ -14,13 +14,16 @@ int main() {
 	ADC_init();
 	sei();
 
-	//start_measurement(1);
+	start_measurement(diodeOffTime);
 
 	while(1) {
 
-//		if (measurementDataComplete) {
-//			start_measurement(1);
-//		}
+		_delay_ms(100);
+		if (measurementDataComplete) {
+			start_measurement(diodeOffTime);
+		}
+
+
 	}
 
 }
@@ -50,7 +53,7 @@ ISR(ADC_vect) {
 		led_iterator++;
 		wasMeasuredWithLedOn = 0;
 		if (led_iterator < NUM_OF_IRS) {
-			start_measurement(1);
+			start_measurement(diodeOffTime);
 		}
 		else {
 			led_iterator = 0; //koniec pomiaru odleglosci po 8 pomiarach

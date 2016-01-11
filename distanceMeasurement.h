@@ -34,34 +34,35 @@
 
 
 #define LED0_PORT C
-#define LED0_PIN 1<<P(LED0_PORT, 0)
+#define LED0_PIN (1<<P(LED0_PORT, 0))
 
 #define LED1_PORT C
-#define LED1_PIN 1<<P(LED1_PORT, 1)
+#define LED1_PIN (1<<P(LED1_PORT, 1))
 
 #define LED2_PORT C
-#define LED2_PIN 1<<P(LED2_PORT, 2)
+#define LED2_PIN (1<<P(LED2_PORT, 2))
 
 #define LED3_PORT C
-#define LED3_PIN 1<<P(LED3_PORT, 3)
+#define LED3_PIN (1<<P(LED3_PORT, 3))
 
 #define LED_ON(x) PORT(LED_PORT(x)) |= LED_PIN(x);
 #define LED_OFF(x) PORT(LED_PORT(x)) &= ~(LED_PIN(x));
 
 #define ADC_PORT F
-#define ADC0_PIN 1<<P(ADC_PORT, 0)
-#define ADC1_PIN 1<<P(ADC_PORT, 1)
-#define ADC2_PIN 1<<P(ADC_PORT, 2)
-#define ADC3_PIN 1<<P(ADC_PORT, 3)
+#define ADC0_PIN (1<<P(ADC_PORT, 0))
+#define ADC1_PIN (1<<P(ADC_PORT, 1))
+#define ADC2_PIN (1<<P(ADC_PORT, 2))
+#define ADC3_PIN (1<<P(ADC_PORT, 3))
 
 #define NUM_OF_IRS 4
 
-uint8_t led_iterator;
-uint8_t wasMeasuredWithLedOn;
-uint8_t measurementDataComplete;
+volatile uint8_t led_iterator;
+volatile uint8_t wasMeasuredWithLedOn;
+volatile uint8_t measurementDataComplete;
 int16_t measured_values [NUM_OF_IRS];
 
 const uint16_t diodeShiningTime;
+const uint16_t diodeOffTime;
 
 void interrupt_init();
 void start_measurement(uint16_t timer_compare_value);
