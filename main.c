@@ -8,16 +8,19 @@
 #include "distanceMeasurement.h"
 
 int main() {
-	DDR(LED0_PORT) |= LED0_PIN;
-	LED_ON(0);
 
+	IR_init();
+	interrupt_init();
 	ADC_init();
+	sei();
+
+	//start_measurement(1);
 
 	while(1) {
-		LED_OFF(0);
-		_delay_ms(500);
-		LED_ON(0);
-		_delay_ms(500);
+
+//		if (measurementDataComplete) {
+//			start_measurement(1);
+//		}
 	}
 
 }

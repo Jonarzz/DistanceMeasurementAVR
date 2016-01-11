@@ -23,7 +23,7 @@ void ADC_init() {
 	ADCSRA |= (1<<ADEN) | (1<<ADIE); //ADC wlaczony, przerwania na zakonczenie pomiaru wlaczone
 	ADCSRA |= (1<<ADPS0) | (1<<ADPS1) | (1<<ADPS2); //preskaler = 128
 
-	DDR(ADC_PORT) &= ~(ADC0_PIN | ADC1_PIN | ADC2_PIN | ADC3_PIN);
+	//DDR(ADC_PORT) &= ~(ADC0_PIN | ADC1_PIN | ADC2_PIN | ADC3_PIN);
 }
 
 void IR_init() {
