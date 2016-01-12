@@ -11,6 +11,7 @@
 #include <avr/io.h>
 #include <util/delay.h>
 #include <avr/interrupt.h>
+#include <stdlib.h>
 
 
 // *** DDR - setting in/out on the pin
@@ -59,7 +60,9 @@
 volatile uint8_t led_iterator;
 volatile uint8_t wasMeasuredWithLedOn;
 volatile uint8_t measurementDataComplete;
+volatile uint16_t mainLoopIterator;
 int16_t measured_values [NUM_OF_IRS];
+char dataToSend [5];
 
 const uint16_t diodeShiningTime;
 const uint16_t diodeOffTime;

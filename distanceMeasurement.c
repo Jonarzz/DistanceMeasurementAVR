@@ -12,6 +12,7 @@ volatile uint8_t wasMeasuredWithLedOn = 0;
 volatile uint8_t measurementDataComplete = 0;
 const uint16_t diodeShiningTime = 50;
 const uint16_t diodeOffTime = 1;
+volatile uint16_t mainLoopIterator = 1;
 
 void interrupt_init() {
 	TCCR1B |= (1 << WGM12);
